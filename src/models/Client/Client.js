@@ -1,8 +1,8 @@
 import { DataTypes, INTEGER } from "sequelize";
 
-const con = require('../../database/connectDatabase');
+import sequelize from "../../database/connectDatabase.js";
 
-const Client = con.define('client', {
+const Client = sequelize.define('client', {
 
     id: {
         primaryKey: true,
@@ -78,4 +78,4 @@ const Client = con.define('client', {
 
 Client.sync();
 
-module.exports = Client;
+export default Client;

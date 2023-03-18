@@ -1,33 +1,29 @@
 import { DataTypes } from "sequelize";
 
-const con = require('../../database/connectDatabase');
+import sequelize from "../../database/connectDatabase.js";
 
-const ClassesTime = con.define('classestime', {
+const User = sequelize.define('user', {
 
     id: {
         primaryKey: true,
         autoIncrement: true,
         type: DataTypes.BIGINT
     },
-    horario_inicial: {
+    role: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    horario_final: {
+    email: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    dia: {
+    password: {
         type: DataTypes.STRING,
-        allowNull: false
-    },
-    client_id: {
-        type: DataTypes.BIGINT,
         allowNull: false
     }
 
-});
+})
 
-ClassesTime.sync();
+User.sync();
 
-module.exports = ClassesTime;
+export default User;

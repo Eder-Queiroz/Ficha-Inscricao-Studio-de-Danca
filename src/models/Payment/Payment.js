@@ -1,8 +1,8 @@
 import { DataTypes } from "sequelize";
 
-const con = require('../../database/connectDatabase');
+import sequelize from "../../database/connectDatabase.js";
 
-const Payment = con.define('payment', {
+const Payment = sequelize.define('payment', {
 
     id: {
         primaryKey: true,
@@ -26,4 +26,4 @@ const Payment = con.define('payment', {
 
 Payment.sync();
 
-module.exports = Payment;
+export default Payment;
