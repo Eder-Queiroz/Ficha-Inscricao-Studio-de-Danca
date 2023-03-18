@@ -2,7 +2,7 @@ import { DataTypes } from "sequelize";
 
 import sequelize from "../../database/connectDatabase.js";
 
-const User = sequelize.define('user', {
+const User = sequelize.define('users', {
 
     id: {
         primaryKey: true,
@@ -20,6 +20,13 @@ const User = sequelize.define('user', {
     password: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    is_deleted: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+    },
+    deleted_dateTime: {
+        type: DataTypes.DATE,
     }
 
 })

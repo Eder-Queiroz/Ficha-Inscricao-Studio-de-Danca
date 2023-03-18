@@ -72,6 +72,14 @@ const Client = sequelize.define('client', {
     classes_time_id: {
         type: DataTypes.BIGINT,
         allowNull: false
+    },
+    is_deleted: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+    },
+    deleted_dateTime: {
+        type: DataTypes.DATE,
+        allowNull: false
     }
 
 });

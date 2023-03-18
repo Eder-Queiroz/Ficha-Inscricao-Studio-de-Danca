@@ -14,7 +14,7 @@ export default class UserController {
 
         let status;
 
-        if(response.error) {
+        if(response.error == true) {
 
             status = 400;
             console.error(`Error ao inserir Usuario! Req: ${JSON.stringify(req.body)}, Res:${response.response}`);

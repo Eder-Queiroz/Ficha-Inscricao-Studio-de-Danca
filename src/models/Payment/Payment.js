@@ -20,6 +20,14 @@ const Payment = sequelize.define('payment', {
     client_id: {
         type: DataTypes.BIGINT,
         allowNull: false
+    },
+    is_deleted: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+    },
+    deleted_dateTime: {
+        type: DataTypes.DATE,
+        allowNull: false
     }
 
 });
