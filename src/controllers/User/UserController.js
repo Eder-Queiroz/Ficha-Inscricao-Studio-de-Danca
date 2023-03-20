@@ -1,5 +1,6 @@
 import BasicAPIResponse from "../../models/BasicResponse/BasicAPIResponse.js";
 import User from "../../models/User/User.js";
+import sequelize, { QueryTypes } from "sequelize";
 // const bcrypt = require('bcrypt');
 import bcrypt from "bcrypt";
 
@@ -36,7 +37,7 @@ export default class UserController {
 
             let response;
 
-            User.create(body).then(() => {
+            await User.create(body).then(() => {
 
                 response = new BasicAPIResponse('Usuario criado com sucesso!', false);
                 resolve(response);
@@ -63,7 +64,7 @@ export default class UserController {
 
         let response = await UserController.updateDatabase(req.body, id);
 
-        if(response.error) {
+        if(response.error == true) {
 
             status = 400;
             console.error(`Error ao atualizar Usuario! Req: ${JSON.stringify(req.body)}, Res:${response.response}`);
@@ -75,7 +76,7 @@ export default class UserController {
 
         }
 
-        return res.status(status).json(response);
+        return res.status(status).json(response.toJson());
 
     }
 
@@ -87,7 +88,7 @@ export default class UserController {
 
             let response;
 
-            User.update(body, {where: {id: id}}).then(() => {
+            await User.update(body, {where: {id: id}}).then(() => {
                 response = new BasicAPIResponse('Usuario atualizado com sucesso!', false);
                 resolve(response);
             }).catch((error) => {
@@ -103,7 +104,7 @@ export default class UserController {
 
         let id = req.body.id;
 
-        let response = UserController.deleteDatabase(id);
+        let response = await UserController.deleteDatabase(id);
 
         let status;
 
@@ -129,7 +130,7 @@ export default class UserController {
 
             let response;
 
-            User.update({is_deleted: true, deleted_dateTime: new Date()}, {where: {id: id}}). then(() => {
+            await User.update({is_deleted: true, deleted_dateTime: new Date()}, {where: {id: id}}). then(() => {
 
                 response = new BasicAPIResponse('Usuario deletado com sucesso!', false);
                 resolve(response);
@@ -142,6 +143,101 @@ export default class UserController {
             });
 
         });
+
+    }
+
+    static async getOneById(req, res) {
+
+        let id = req.params.id;
+
+        let response = await UserController.getOneByIdDatabase(id);
+
+        let status;
+
+        if(response.error) {
+
+            status = 400;
+            console.error(`Error ao buscar Usuario!, Res:${response.response}`);
+
+        } else {
+
+            status = 200;
+            console.log(`Usuario buscado com sucesso!, Res:${response.response}`);
+
+        }
+
+        return res.status(status).json(response.toJson())
+
+    }
+
+    static async getOneByIdDatabase(id) {
+
+        return new Promise(async (resolve, reject) => {
+
+            let response;
+
+            try {
+                const findOne = await User.findByPk(id);
+
+                response = new BasicAPIResponse(findOne, false);
+                resolve(response);
+
+            }catch(error) {
+
+                response = new BasicAPIResponse(`Falha ao buscar usuario ${id}: ${error}`, true);
+                resolve(response);
+
+            }
+
+        });
+
+    }
+
+    static async getAll(req, res) {
+
+        let status;
+
+        const response = await UserController.getAllDatabase();
+
+
+        if(response.error) {
+
+            status = 400;
+            console.error(`Error ao buscar Usuarios!, Res:${response.response}`);
+
+        }else {
+
+            status = 200;
+            console.log(`Usuarios buscado com sucesso!, Res:${response.response}`);
+
+        }
+
+        return res.status(status).json(response);
+
+    }
+
+    static async getAllDatabase() {
+
+        return new Promise(async (resolve, reject) => {
+
+            let response;
+
+            try{
+
+                const findAll = await User.findAll({where: {is_deleted: false}});
+
+                response = new BasicAPIResponse(findAll, false);
+
+                resolve(response);
+
+            }catch(error) {
+
+                response = new BasicAPIResponse(`Erro ao busacar usuarios da tabela users: ${error}`, true);
+                resolve(response);
+
+            }
+
+        })
 
     }
 

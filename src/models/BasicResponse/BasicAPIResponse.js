@@ -1,9 +1,9 @@
 export default class BasicAPIResponse {
 
-    constructor (
-        response,
-        error
-    ){ };
+    constructor (response, error){ 
+        this.response = response;
+        this.error = error;
+    };
 
     toJson() {
         let json = {
