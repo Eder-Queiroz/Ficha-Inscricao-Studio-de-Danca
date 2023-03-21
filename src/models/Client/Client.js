@@ -26,7 +26,7 @@ const Client = sequelize.define('client', {
         allowNull: false
     },
     cep: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.STRING,
         allowNull: false
     },
     cidade: {
@@ -38,7 +38,7 @@ const Client = sequelize.define('client', {
         allowNull: false
     },
     telefone: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.STRING,
         allowNull: false
     },
     email: {
@@ -58,7 +58,7 @@ const Client = sequelize.define('client', {
         allowNull: false
     },
     professora: {
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.STRING,
         allowNull: false
     },
     data_matricula: {
@@ -78,8 +78,7 @@ const Client = sequelize.define('client', {
         allowNull: false
     },
     deleted_dateTime: {
-        type: DataTypes.DATE,
-        allowNull: false
+        type: DataTypes.DATE
     }
 
 });

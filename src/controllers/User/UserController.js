@@ -33,7 +33,7 @@ export default class UserController {
 
     static async insertDatabase(body) {
 
-        return new Promise(async (resolve, reject) => {
+        return new Promise(async resolve => {
 
             let response;
 
@@ -84,7 +84,7 @@ export default class UserController {
 
     static async updateDatabase(body, id) {
 
-        return new Promise(async (resolve, reject) => {
+        return new Promise(async resolve => {
 
             let response;
 
@@ -126,7 +126,7 @@ export default class UserController {
 
     static async deleteDatabase(id) {
         
-        return new Promise(async (resolve, reject) => {
+        return new Promise(async resolve => {
 
             let response;
 
@@ -172,7 +172,7 @@ export default class UserController {
 
     static async getOneByIdDatabase(id) {
 
-        return new Promise(async (resolve, reject) => {
+        return new Promise(async resolve => {
 
             let response;
 
@@ -218,7 +218,7 @@ export default class UserController {
 
     static async getAllDatabase() {
 
-        return new Promise(async (resolve, reject) => {
+        return new Promise(async resolve => {
 
             let response;
 
