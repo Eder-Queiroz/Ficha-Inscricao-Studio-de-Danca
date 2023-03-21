@@ -31,7 +31,6 @@ const ClassesTime = sequelize.define('classestime', {
     },
     deleted_dateTime: {
         type: DataTypes.DATE,
-        allowNull: false
     }
 
 });
