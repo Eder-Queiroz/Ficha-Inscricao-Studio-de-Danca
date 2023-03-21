@@ -27,7 +27,6 @@ const Payment = sequelize.define('payment', {
     },
     deleted_dateTime: {
         type: DataTypes.DATE,
-        allowNull: false
     }
 
 });

@@ -1,7 +1,5 @@
 import BasicAPIResponse from "../../models/BasicResponse/BasicAPIResponse.js";
 import User from "../../models/User/User.js";
-import sequelize, { QueryTypes } from "sequelize";
-// const bcrypt = require('bcrypt');
 import bcrypt from "bcrypt";
 
 export default class UserController {
