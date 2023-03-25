@@ -1,8 +1,8 @@
 import { DataTypes } from "sequelize";
 
-const con = require('../../database/connectDatabase');
+import sequelize from "../../database/connectDatabase.js";
 
-const ClassesTime = con.define('classestime', {
+const ClassesTime = sequelize.define('classestime', {
 
     id: {
         primaryKey: true,
@@ -24,10 +24,17 @@ const ClassesTime = con.define('classestime', {
     client_id: {
         type: DataTypes.BIGINT,
         allowNull: false
+    },
+    is_deleted: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+    },
+    deleted_dateTime: {
+        type: DataTypes.DATE,
     }
 
 });
 
 ClassesTime.sync();
 
-module.exports = ClassesTime;
+export default ClassesTime;

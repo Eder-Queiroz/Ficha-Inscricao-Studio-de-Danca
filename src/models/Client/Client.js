@@ -1,8 +1,8 @@
 import { DataTypes, INTEGER } from "sequelize";
 
-const con = require('../../database/connectDatabase');
+import sequelize from "../../database/connectDatabase.js";
 
-const Client = con.define('client', {
+const Client = sequelize.define('client', {
 
     id: {
         primaryKey: true,
@@ -26,7 +26,7 @@ const Client = con.define('client', {
         allowNull: false
     },
     cep: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.STRING,
         allowNull: false
     },
     cidade: {
@@ -38,7 +38,7 @@ const Client = con.define('client', {
         allowNull: false
     },
     telefone: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.STRING,
         allowNull: false
     },
     email: {
@@ -58,7 +58,7 @@ const Client = con.define('client', {
         allowNull: false
     },
     professora: {
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.STRING,
         allowNull: false
     },
     data_matricula: {
@@ -72,10 +72,17 @@ const Client = con.define('client', {
     classes_time_id: {
         type: DataTypes.BIGINT,
         allowNull: false
+    },
+    is_deleted: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+    },
+    deleted_dateTime: {
+        type: DataTypes.DATE
     }
 
 });
 
 Client.sync();
 
-module.exports = Client;
+export default Client;

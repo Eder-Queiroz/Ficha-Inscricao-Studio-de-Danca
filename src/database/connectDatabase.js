@@ -1,6 +1,6 @@
-const {Sequelize} = require("sequelize");
+import { Sequelize } from "sequelize";
 
-const sequelize = new Sequelize('BancoStudioDanca', 'root', '', {
+const sequelize = new Sequelize('studioteste', 'root', '', {
 
     host: 'localhost',
     dialect: 'mysql'
@@ -11,10 +11,10 @@ sequelize.authenticate().then(() => {
 
     console.log("Conexão com o banco de dados realizada com sucesso!");
 
-}).catch((error: any) => {
+}).catch((error) => {
 
     console.error("Falha ao se conectar ao banco de dados:", error);
 
 });
 
-module.exports = sequelize;
+export default sequelize;

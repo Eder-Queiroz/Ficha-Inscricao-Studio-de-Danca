@@ -1,8 +1,8 @@
 import { DataTypes } from "sequelize";
 
-const con = require('../../database/connectDatabase');
+import sequelize from "../../database/connectDatabase.js";
 
-const User = con.define('user', {
+const User = sequelize.define('users', {
 
     id: {
         primaryKey: true,
@@ -20,10 +20,17 @@ const User = con.define('user', {
     password: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    is_deleted: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+    },
+    deleted_dateTime: {
+        type: DataTypes.DATE,
     }
 
 })
 
 User.sync();
 
-module.exports = User;
+export default User;

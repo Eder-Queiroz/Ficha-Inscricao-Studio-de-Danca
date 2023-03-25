@@ -1,8 +1,8 @@
 import { DataTypes } from "sequelize";
 
-const con = require('../../database/connectDatabase');
+import sequelize from "../../database/connectDatabase.js";
 
-const Payment = con.define('payment', {
+const Payment = sequelize.define('payment', {
 
     id: {
         primaryKey: true,
@@ -20,10 +20,17 @@ const Payment = con.define('payment', {
     client_id: {
         type: DataTypes.BIGINT,
         allowNull: false
+    },
+    is_deleted: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+    },
+    deleted_dateTime: {
+        type: DataTypes.DATE,
     }
 
 });
 
 Payment.sync();
 
-module.exports = Payment;
+export default Payment;
