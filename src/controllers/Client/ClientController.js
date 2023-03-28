@@ -32,7 +32,28 @@ export default class ClientController {
 
             let response;
 
-            await Client.create(body).then(() => {
+            let params = {
+                nome: body.nome,
+                rua: body.rua,
+                numero: body.numero,
+                bairro: body.bairro,
+                cep: body.cep,
+                cidade: body.cidade,
+                estado: body.estado,
+                telefone1: body.telefone1,
+                telefone2: body.telefone2,
+                celular: body.celular,
+                email: body.email,
+                data_nascimento: body.data_nascimento,
+                cpf: body.cpf,
+                rg: body.rg,
+                professora: body.professora,
+                data_matricula: body.data_matricula,
+                responsavel: body.responsavel,
+                is_deleted: false
+            }
+
+            await Client.create(params).then(() => {
 
                 response = new BasicAPIResponse('Client adicionado com sucesso!', false);
                 resolve(response);

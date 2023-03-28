@@ -37,7 +37,13 @@ const Client = sequelize.define('client', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    telefone: {
+    telefone1: {
+        type: DataTypes.STRING,
+    },
+    telefone2: {
+        type: DataTypes.STRING,
+    },
+    celular: {
         type: DataTypes.STRING,
         allowNull: false
     },
@@ -65,17 +71,16 @@ const Client = sequelize.define('client', {
         type: DataTypes.DATE,
         allowNull: false
     },
-    payment_id: {
-        type: DataTypes.BIGINT,
-        allowNull: false
+    responsavel: {
+        type: DataTypes.STRING
     },
     classes_time_id: {
         type: DataTypes.BIGINT,
-        allowNull: false
+        // allowNull: false
     },
     is_deleted: {
         type: DataTypes.BOOLEAN,
-        allowNull: false
+        // allowNull: false
     },
     deleted_dateTime: {
         type: DataTypes.DATE
