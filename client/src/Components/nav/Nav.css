@@ -27,7 +27,7 @@ nav div > a {
 }
 
 nav .logo {
-    background-image: url('../image/logo-removebg-preview.png');
+    background-image: url('../../image/logo-removebg-preview.png');
     background-position: center;
     background-size: cover;
     width: 60px;

@@ -1,8 +1,9 @@
 import React, {Component} from "react";
 import './Main.css';
 
-import Nav from "../Components/Nav";
-import Cadastro from "../Components/Cadastro";
+import Nav from "../Components/nav/Nav";
+// import Cadastro from "../Components/cadastro/Cadastro";
+import Client from '../Components/cliente/Client'
 
 export default class Main extends Component {
 
@@ -11,7 +12,7 @@ export default class Main extends Component {
         return(
             <div>
                 <Nav />
-                <Cadastro />
+                <Client />
             </div>
         );
 
