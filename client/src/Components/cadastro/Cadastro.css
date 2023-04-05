@@ -43,13 +43,16 @@ form .data_matricula {
     width: 20vw;
     padding: .7em;
     cursor: pointer;
-    background: rgb(22,185,0);
-    background: linear-gradient(90deg, rgba(22,185,0,1) 0%, rgba(69,233,46,1) 67%, rgba(116,231,135,1) 100%);
     border-radius: .6em;
     border: .6px solid black;
     outline: none;
     color: white;
     font-size: 1em;
+}
+
+.addButton {
+    background: rgb(22,185,0);
+    background: linear-gradient(90deg, rgba(22,185,0,1) 0%, rgba(69,233,46,1) 67%, rgba(116,231,135,1) 100%);
 }
 
 div > input {

@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from '../../Api/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCircleInfo, faTrash, faMoneyBill, faCalendarDays, faSearch} from '@fortawesome/free-solid-svg-icons'
+import { Link } from "react-router-dom";
 
 import "./Client.css";
 
-const api = axios.create({
-    baseURL: "http://localhost:3001"
-});
 
 const getSearchClients = search => {
 
@@ -79,12 +77,15 @@ export default function Client() {
             {
                 typeof clients !== 'undefined' && clients.map((value) => {
 
+                    const infoUrl = `/Clientes/${value.id}`;
+                    const paymentUrl = `/Payment/${value.id}`;
+
                     return (
                         <li key={value.id} className="client">
                             <h3 className="nome">{value.nome}</h3>
                             <div>
-                                <a href="#"><FontAwesomeIcon icon={faCircleInfo} /></a>
-                                <a href="#" className="money"><FontAwesomeIcon icon={faMoneyBill} /></a>
+                                <Link to={infoUrl}><FontAwesomeIcon icon={faCircleInfo} /></Link>
+                                <Link to={paymentUrl} className="money"><FontAwesomeIcon icon={faMoneyBill} /></Link>
                                 <a href="#" className="calendar"><FontAwesomeIcon icon={faCalendarDays} /></a>
                                 <a href="#" className="trash"><FontAwesomeIcon icon={faTrash} /></a>
                             </div>

@@ -3,8 +3,11 @@ import './Main.css';
 
 import Nav from "../Components/nav/Nav";
 // import Cadastro from "../Components/cadastro/Cadastro";
-import Client from '../Components/cliente/Client'
+// import Client from '../Components/cliente/Client'
 
+// reaporveitamento de estrutura
+
+import { Outlet } from "react-router-dom";
 export default class Main extends Component {
 
     render() {
@@ -12,7 +15,7 @@ export default class Main extends Component {
         return(
             <div>
                 <Nav />
-                <Client />
+                <Outlet />
             </div>
         );
 

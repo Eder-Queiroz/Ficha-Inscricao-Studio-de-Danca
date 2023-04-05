@@ -17,6 +17,10 @@ const Payment = sequelize.define('payment', {
         type: DataTypes.FLOAT,
         allowNull: false
     },
+    ultimo_pagamento: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+    },
     client_id: {
         type: DataTypes.BIGINT,
         allowNull: false

@@ -1,15 +1,17 @@
 import React from "react";
 import './Nav.css';
+import { Link } from "react-router-dom";
 
-export default props => {
+export default function Nav() {
     return(
 
         <nav>
             <div>
-                <a href="#">Clients</a>
-                <a href="#">Cadastro</a>
+                <Link to='/'>Clientes</Link>
+                <Link to='/cadastro'>Cadastro</Link>
+                <Link to='/payment'>Pagamentos</Link>
             </div>
-            <a href="#"><div className="logo"></div></a>
+            <Link to='/'><div className="logo"></div></Link>
         </nav>
 
     );

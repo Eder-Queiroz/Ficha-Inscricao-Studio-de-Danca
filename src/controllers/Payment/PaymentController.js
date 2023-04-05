@@ -235,4 +235,61 @@ export default class PaymentController {
 
     }
 
+    static async getLastPayment(req, res) {
+
+        const clientId = req.params.client_id;
+
+        const response = await PaymentController.getLastPaymentDatabase(clientId);
+        
+        let status;
+
+        if(response.error) {
+
+            status = 400;
+
+            console.error(`Error: ${response.response}`);
+
+        }else {
+
+            status = 200;
+
+            console.log(`Payment ${clientId} buscado com sucesso: `, response.response);
+
+        }
+
+        return res.status(status).json(response);
+
+    }
+
+    static async getLastPaymentDatabase(client_id) {
+
+        return new Promise(async resolve => {
+
+            let response;
+
+            try {
+
+                const findOneClientId = await Payment.findOne({
+                    where: {
+                        client_id: client_id,
+                        ultimo_pagamento: true
+                    }
+                });
+
+                response = new BasicAPIResponse(findOneClientId, false);
+                resolve(response);
+
+            } catch(err) {
+
+                response = new BasicAPIResponse(err, true);
+                resolve(response);
+
+            }
+
+        });
+
+    }
+
+    
+
 }

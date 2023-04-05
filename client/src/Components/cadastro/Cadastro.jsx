@@ -1,11 +1,6 @@
 import React, {Component, useState} from "react";
 import './Cadastro.css';
-import axios from 'axios';
-// import teste from "./teste";
-
-const api = axios.create({
-  baseURL: "http://localhost:3001",
-});
+import api from "../../Api/api";
 
 const initialState = {
     logradouro: '',
@@ -193,7 +188,7 @@ export default class Cadastro extends Component {
                     </div>
                     
                     <div className="button">
-                        <button type="submit">Cadastrar</button>
+                        <button type="submit" className="addButton">Cadastrar</button>
                     </div>
                 </form>
             </section>

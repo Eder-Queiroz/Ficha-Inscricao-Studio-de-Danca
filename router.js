@@ -26,6 +26,7 @@ routes.get('/get-payments', PaymentController.getAll);
 routes.get('/get-payment/:id', PaymentController.getOneById);
 routes.put('/update-payment', PaymentController.update);
 routes.delete('/delete-payment', PaymentController.delete);
+routes.get('/payment/last-payment/:client_id', PaymentController.getLastPayment);
 
 // ClassesTime
 routes.post('/new-classesTime', ClassesTimeController.insert);
